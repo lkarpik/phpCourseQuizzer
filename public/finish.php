@@ -14,20 +14,19 @@
         <h1> Welcome to Quizzer </h1>
         <small>Add questionsts and run it</small>
         <hr class="bg-primary ">
-        <br>
-        
+        <br>       
     </div>
-</header>
-    
-    
+</header>   
 <main>
     <div class="container">
-        <p>Total questions in database: 5</p>
-        <p>Time to finish: 2.5 minutes</p>
+        <h3>Gratulations! You finished quizz</h3>
+        
+        <p>Your score: 5</p>
+        
         
         
         <div class="container d-flex justify-content-around">
-        <a href="question.php" class="btn btn-primary">Start  a Quiz</a>
+        <a href="question.php" class="btn btn-primary">Start a new Quiz</a>
         <a href="add.php" class="btn btn-info">Add question</a>
         </div>
         <br>

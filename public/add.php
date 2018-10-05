@@ -23,37 +23,40 @@
 <main>
     <h3 class="text-center">Add a question</h3>
     <div class="container">
-        <form class="form" action="add.php" method="POST">
+        <form action="add.php" method="POST">
             <div class="form-group">
-            <div class="form-row">          
-                <div class="col-3">
-                <label class="col-form-label" for="">Question number</label>
+                <div class="form-row">          
+                    <div class="col-3">
+                        <label class="col-form-label" for="">Question number</label>
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control" type="number" name="question_number">
+                    </div>
                 </div>
-                <div class="col-3">
-                <input class="form-control" type="number" name="question_number">
-                </div>
-            </div> 
-            <br>
-            <p><label for="">Question text</label>
-            <input class="form-control" type="text" name="question_text"></p>
-            <p><label for="">Answer #1</label>
-            <input class="form-control" type="text" name="answer1"></p>
-            <p><label for="">Answer #2</label>
-            <input class="form-control" type="text" name="answer2"></p>
-            <p><label for="">Answer #3</label>
-            <input class="form-control" type="text" name="answer3"></p>
-            <div class="form-row">          
-                <div class="col-3">
-                <label class="col-form-label" for="">Correct answer</label>
-                </div>
-                <div class="col-3">
-                <input class="form-control" type="number" name="correct">
-                </div>
-            </div>
             
+           
+                <p><label for="">Question text</label>
+                <input class="form-control" type="text" name="question_text"></p>
+                <p><label for="">Answer #1</label>
+                <input class="form-control" type="text" name="answer1"></p>
+                <p><label for="">Answer #2</label>
+                <input class="form-control" type="text" name="answer2"></p>
+                <p><label for="">Answer #3</label>
+                <input class="form-control" type="text" name="answer3"></p>
+                <div class="form-row">          
+                    <div class="col-3">
+                        <label class="col-form-label" for="">Correct answer</label>
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control" type="number" name="correct">
+                    </div>
+                </div>
+                           
             </div>
-
-    
+            <div class="container d-flex justify-content-around">
+            <input type="submit" value="Submit" name="Add question" class="btn btn-primary">            
+            <a href="index.php" class="btn btn-secondary">Main page</a>   
+            </div>
         </form>
     
     <hr class="bg-primary ">         
