@@ -22,7 +22,7 @@
     
 <main>
     <div class="container">
-        <p>Total questions in db: 5</p>
+        <p>Total questions in database: 5</p>
         <p>Time to finish: 2.5 minutes</p>
         
         
