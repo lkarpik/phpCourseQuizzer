@@ -1,3 +1,37 @@
+<?php
+include 'db.php';
+
+if (isset($_POST['submit'])) {
+
+    $question_number = mysqli_real_escape_string($mysqli, $_POST['question_number']);
+    $question_text = mysqli_real_escape_string($mysqli, $_POST['question_text']);
+    $answers = array();
+    $answers[1] = mysqli_real_escape_string($mysqli, $_POST['answer1']);
+    $answers[2] = mysqli_real_escape_string($mysqli, $_POST['answer2']);
+    $answers[3] = mysqli_real_escape_string($mysqli, $_POST['answer3']);
+    $correct = mysqli_real_escape_string($mysqli, $_POST['correct']);
+
+    $query = "INSERT INTO `questions` (question_number, question_text) 
+                VALUES('$question_number', '$question_text')";
+    $mysqli->query($query) or die($mysqli->error.__LINE__);
+    
+    foreach ($answers as $key => $value) {
+        
+        if ($correct == $key) {
+            $correct_answer = 1;
+        } else $correct_answer = 0;
+
+        $query = "INSERT INTO `answers` (question_number, answer_text, correct) 
+                    VALUES('$question_number', '$value', '$correct_answer')";
+        $mysqli->query($query) or die($mysqli->error.__LINE__);
+
+    }
+    header('Location: index.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +66,7 @@
                     <div class="col-3">
                         <input class="form-control" type="number" name="question_number">
                     </div>
-                </div>
-            
-           
+                </div>           
                 <p><label for="">Question text</label>
                 <input class="form-control" type="text" name="question_text"></p>
                 <p><label for="">Answer #1</label>
@@ -54,7 +86,7 @@
                            
             </div>
             <div class="container d-flex justify-content-around">
-            <input type="submit" value="Submit" name="Add question" class="btn btn-primary">            
+            <input type="submit" value="Add question" name="submit" class="btn btn-primary">            
             <a href="index.php" class="btn btn-secondary">Main page</a>   
             </div>
         </form>

@@ -17,9 +17,7 @@
         <br>
         
     </div>
-</header>
-    
-    
+</header>        
 <main>
     <div class="container">
         <p>Total questions in database: 5</p>

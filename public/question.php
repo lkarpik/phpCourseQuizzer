@@ -18,14 +18,10 @@
         
     </div>
 </header>
-    
-    
 <main>
     <div class="container">
         <p>Total questions in database: 5</p>
-        <p>Time to finish: 2.5 minutes</p>
-        
-        
+        <p>Time to finish: 2.5 minutes</p>       
         <div class="container d-flex justify-content-around">
         <a href="question.php" class="btn btn-primary">Start  a Quiz</a>
         <a href="add.php" class="btn btn-info">Add question</a>
