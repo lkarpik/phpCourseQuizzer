@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+session_start();
 
 if (isset($_POST['submit'])) {
 
@@ -26,9 +27,9 @@ if (isset($_POST['submit'])) {
         $mysqli->query($query) or die($mysqli->error.__LINE__);
 
     }
-    header('Location: index.php');
+    header('Location: add.php');
 }
-
+$mysqli->close();
 ?>
 
 
@@ -64,7 +65,7 @@ if (isset($_POST['submit'])) {
                         <label class="col-form-label" for="">Question number</label>
                     </div>
                     <div class="col-3">
-                        <input class="form-control" type="number" name="question_number">
+                        <input class="form-control" type="number" name="question_number" value="<?= $_SESSION['total']+1 ?>">
                     </div>
                 </div>           
                 <p><label for="">Question text</label>

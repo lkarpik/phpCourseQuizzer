@@ -1,3 +1,22 @@
+<?php
+include 'db.php';
+
+session_start();
+$number = mysqli_real_escape_string($mysqli, $_GET['number']);
+$query = "SELECT * FROM `questions` WHERE `question_number`='$number'";
+
+$result = $mysqli->query($query) or die("Question database error: ".$mysqli->error.__LINE__);
+
+$question = $result->fetch_assoc();
+
+$result->close();
+
+$query = "SELECT * FROM `answers` WHERE `question_number`='$number'";
+$result = $mysqli->query($query) or die("Answer databasae error: ".$mysqli->error.__LINE__);
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +39,20 @@
 </header>
 <main>
     <div class="container">
-        <p>Total questions in database: 5</p>
-        <p>Time to finish: 2.5 minutes</p>       
-        <div class="container d-flex justify-content-around">
-        <a href="question.php" class="btn btn-primary">Start  a Quiz</a>
-        <a href="add.php" class="btn btn-info">Add question</a>
-        </div>
+        <p>Question <?= $number ?> from <?= $_SESSION['total'] ?></p>
+        
+        <h4><strong><?= $question['question_text'] ?></strong></h4>
+        
+        <form action="pocess.php" method="post">
+        <?php while($row = $result->fetch_assoc()) : ?>
+            <div class="radio">
+                <label><input type="radio" name="answer" value="$row['id']" > <?= $row['answer_text'] ?></label>              
+            </div>
+            <?php endwhile; ?>
+            
+            <input type="submit" value="Submit" class="btn btn-primary" name="submit">
+            <input type="hidden" name="number" value="$number">
+        </form>
         <br>
         <hr class="bg-primary ">     
     </div>

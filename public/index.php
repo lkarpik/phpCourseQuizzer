@@ -1,3 +1,18 @@
+<?php
+include 'db.php';
+session_start();
+
+$query = "SELECT `id` FROM `questions`";
+
+$result = $mysqli->query($query) or die('Server error: '.$mysqli->error);
+
+$_SESSION['total'] = $result->num_rows;
+
+$result->close();
+$mysqli->close();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +35,12 @@
 </header>        
 <main>
     <div class="container">
-        <p>Total questions in database: 5</p>
-        <p>Time to finish: 2.5 minutes</p>
+        <p>Total questions in database: <?= $_SESSION['total'] ?></p>
+        <p>Time to finish: <?php echo ($_SESSION['total'] * 0.5) ?> minutes</p>
         
         
         <div class="container d-flex justify-content-around">
-        <a href="question.php" class="btn btn-primary">Start  a Quiz</a>
+        <a href="question.php?number=1" class="btn btn-primary">Start  a Quiz</a>
         <a href="add.php" class="btn btn-info">Add question</a>
         </div>
         <br>
