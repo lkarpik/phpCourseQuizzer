@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +24,14 @@
     <div class="container">
         <h3>Gratulations! You finished quizz</h3>
         
-        <p>Your score: 5</p>
-        
-        
+        <p>Your score: 
+        <?php 
+            echo($_SESSION['score']); 
+            unset($_SESSION['score']);
+        ?></p>
         
         <div class="container d-flex justify-content-around">
-        <a href="question.php" class="btn btn-primary">Start a new Quiz</a>
+        <a href="question.php?number=1" class="btn btn-primary">Start a new Quiz</a>
         <a href="add.php" class="btn btn-info">Add question</a>
         </div>
         <br>

@@ -43,15 +43,15 @@ $result = $mysqli->query($query) or die("Answer databasae error: ".$mysqli->erro
         
         <h4><strong><?= $question['question_text'] ?></strong></h4>
         
-        <form action="pocess.php" method="post">
+        <form action="process.php" method="post">
         <?php while($row = $result->fetch_assoc()) : ?>
             <div class="radio">
-                <label><input type="radio" name="answer" value="$row['id']" > <?= $row['answer_text'] ?></label>              
+                <label><input type="radio" name="answer" value="<?= $row['id'] ?>" > <?= $row['answer_text'] ?></label>              
             </div>
             <?php endwhile; ?>
             
             <input type="submit" value="Submit" class="btn btn-primary" name="submit">
-            <input type="hidden" name="number" value="$number">
+            <input type="hidden" name="number" value="<?= $number ?>">
         </form>
         <br>
         <hr class="bg-primary ">     

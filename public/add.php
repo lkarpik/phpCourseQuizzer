@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         $mysqli->query($query) or die($mysqli->error.__LINE__);
 
     }
-    header('Location: add.php');
+    header('Location: index.php');
 }
 $mysqli->close();
 ?>
